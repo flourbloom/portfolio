@@ -1,13 +1,19 @@
 // Open contact modal
 function openContactModal() {
-  document.getElementById("contactModal").classList.add("active");
-  document.body.style.overflow = "hidden";
+  const modal = document.getElementById("contactModal");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
 }
 
 // Close contact modal
 function closeContactModal() {
-  document.getElementById("contactModal").classList.remove("active");
-  document.body.style.overflow = "auto";
+  const modal = document.getElementById("contactModal");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
 }
 
 // Handle form submission
@@ -35,14 +41,17 @@ function handleSubmit(event) {
 }
 
 // Close modal when clicking outside
-document.getElementById("contactModal").addEventListener("click", function (e) {
-  if (e.target === this) {
-    closeContactModal();
-  }
-});
-
-// Add click handler only to the hero CTA button
 document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("contactModal");
+  if (modal) {
+    modal.addEventListener("click", function (e) {
+      if (e.target === this) {
+        closeContactModal();
+      }
+    });
+  }
+
+  // Add click handler only to the hero CTA button
   const heroButton = document.querySelector(
     '.hero .cta-button[href="#contact"]'
   );
