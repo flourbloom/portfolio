@@ -641,24 +641,28 @@ nav ul li a:hover {
 
 @media (max-width: 480px) {
   .timeline-header h2 {
-    font-size: 48px;
+    font-size: 32px;
   }
 
   .timeline-header i {
-    font-size: 60px;
+    font-size: 40px;
+  }
+
+  .timeline-header {
+    gap: 15px;
   }
 
   .timeline-year {
-    font-size: 48px;
+    font-size: 40px;
   }
 
   .timeline-item h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .timeline-item p {
-    font-size: 18px;
-    line-height: 26px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .timeline-grid {
@@ -768,6 +772,30 @@ nav ul li a:hover {
 
   .about-text h3 {
     font-size: 24px;
+  }
+
+  /* Fix about section image overlap on mobile */
+  .about-image-container {
+    height: auto;
+    min-height: 250px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .about-image-bg {
+    height: 200px;
+    position: relative;
+  }
+
+  .about-image-container img {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    max-width: 100%;
+    width: 100%;
+    margin-top: -50px;
+    display: block;
   }
 
   .service-card h3 {
@@ -1458,5 +1486,178 @@ nav ul li a:hover {
 
   .contact-value {
     font-size: 20px;
+  }
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Hide mobile contact info on desktop */
+.mobile-contact-info {
+  display: none;
+}
+
+/* Hamburger Animation when active */
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+}
+
+/* Responsive - Tablet (iPad) */
+@media (max-width: 1024px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .contact-info {
+    display: none;
+  }
+
+  .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: #fff;
+    padding: 80px 30px 30px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    margin-top: 0;
+    overflow-y: auto;
+  }
+
+  nav.active {
+    right: 0;
+  }
+
+  .nav-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  nav ul li a {
+    font-size: 22px;
+  }
+
+  .nav-flex .socials {
+    margin-left: 0;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  /* Mobile menu contact info */
+  .mobile-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+  }
+
+  .mobile-contact-info .contact-item h3 {
+    color: #738862;
+  }
+}
+
+/* Responsive - Mobile (iPhone) */
+@media (max-width: 480px) {
+  nav {
+    width: 100%;
+    right: -100%;
+  }
+
+  .hamburger {
+    width: 28px;
+    height: 22px;
+  }
+
+  .hamburger-line {
+    height: 2.5px;
+  }
+
+  .hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(9.75px) rotate(45deg);
+  }
+
+  .hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-9.75px) rotate(-45deg);
+  }
+
+  nav ul li a {
+    font-size: 20px;
+  }
+
+  .brand-text h1 {
+    font-size: 18px;
+  }
+
+  .brand-text p {
+    font-size: 11px;
+  }
+
+  .logo {
+    width: 50px;
+    height: 48px;
+    font-size: 28px;
   }
 }

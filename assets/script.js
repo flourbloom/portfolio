@@ -40,6 +40,47 @@ function handleSubmit(event) {
   closeContactModal();
 }
 
+// Toggle mobile menu
+function toggleMobileMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav-menu");
+  const overlay = document.querySelector(".mobile-menu-overlay");
+
+  if (hamburger && nav) {
+    hamburger.classList.toggle("active");
+    nav.classList.toggle("active");
+
+    if (overlay) {
+      overlay.classList.toggle("active");
+    }
+
+    // Prevent body scroll when menu is open
+    if (nav.classList.contains("active")) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }
+}
+
+// Close mobile menu
+function closeMobileMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav-menu");
+  const overlay = document.querySelector(".mobile-menu-overlay");
+
+  if (hamburger && nav) {
+    hamburger.classList.remove("active");
+    nav.classList.remove("active");
+
+    if (overlay) {
+      overlay.classList.remove("active");
+    }
+
+    document.body.style.overflow = "auto";
+  }
+}
+
 // Close modal when clicking outside
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("contactModal");
@@ -61,4 +102,47 @@ document.addEventListener("DOMContentLoaded", function () {
       openContactModal();
     });
   }
+
+  // Hamburger menu functionality
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav-menu");
+
+  if (hamburger) {
+    hamburger.addEventListener("click", toggleMobileMenu);
+  }
+
+  // Create and add overlay for mobile menu
+  if (!document.querySelector(".mobile-menu-overlay")) {
+    const overlay = document.createElement("div");
+    overlay.className = "mobile-menu-overlay";
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", closeMobileMenu);
+  }
+
+  // Close mobile menu when clicking a nav link
+  const navLinks = document.querySelectorAll("#nav-menu ul li a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      // Check if we're in mobile view
+      if (window.innerWidth <= 1024) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // Close mobile menu on window resize if viewport becomes larger
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 1024) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close mobile menu on escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeMobileMenu();
+      closeContactModal();
+    }
+  });
 });
