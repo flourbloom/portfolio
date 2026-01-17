@@ -1,4 +1,4 @@
-# Seavhong CHEA Portfolio
+# [Seavhong CHEA Portfolio](https://flourbloom.github.io/portfolio/)
 
 This is a personal portfolio website for Seavhong CHEA, showcasing skills in software engineering, UI/UX design, and featured projects.
 
